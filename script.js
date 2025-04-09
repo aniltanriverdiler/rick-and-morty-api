@@ -27,10 +27,10 @@ const fetchCharacters = async (page = 1, name = "") => {
 
 const createCharacterCard = (character) => {
   const col = document.createElement("div");
-  col.className = "col-md-4 col-lg-3";
+  col.className = "col-md-4 col-lg-3 mb-1";
 
   col.innerHTML = `
-    <div class="card h-100">
+    <div class="card">
       <img src="${character.image}" class="card-img-top" alt="${character.name}">
       <div class="card-body d-flex flex-column">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#characterModal">
@@ -40,7 +40,7 @@ const createCharacterCard = (character) => {
     </div>
   `;
 
-  const detailsButton = col.querySelector("button"); 
+  const detailsButton = col.querySelector("button");
 
   detailsButton.addEventListener("click", () => {
     const modalBody = document.querySelector(".modal-body");
@@ -49,16 +49,16 @@ const createCharacterCard = (character) => {
     modalTitle.textContent = character.name;
 
     modalBody.innerHTML = `
-      <img src="${character.image}" class="img-fluid mb-3" />
-      <p><strong>Status:</strong> ${character.status}</p>
-      <p><strong>Species:</strong> ${character.species}</p>
-      <p><strong>Gender:</strong> ${character.gender}</p>
-      <p><strong>Location:</strong> ${character.location.name}</p>
-      <p><strong>Episode Count:</strong> ${character.episode.length}</p>
+      <img src="${character.image}" class="img-fluid mb-3"/>
+      <p>Status: ${character.status}</p>
+      <p>Species: ${character.species}</p>
+      <p>Gender: ${character.gender}</p>
+      <p>Location: ${character.location.name}</p>
+      <p>Episode Count: ${character.episode.length}</p>
     `;
   });
 
-  container.appendChild(col); 
+  container.appendChild(col);
 };
 
 searchInput.addEventListener("input", () => {

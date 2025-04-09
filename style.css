@@ -1,0 +1,99 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-family: "Bangers", system-ui !important;
+  overflow-x: hidden;
+}
+
+/* Video Background */
+#bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Content Overlay */
+.content-overlay {
+  position: relative;
+  z-index: 1;
+  padding-top: 30px;
+}
+
+/* Titles */
+h1 {
+  color: #00ff91;
+  text-shadow: 1px 1px 2px #000;
+}
+
+/* Input */
+input.form-control {
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid #00ff91;
+  color: #fff;
+}
+
+input.form-control::placeholder {
+  color: #ccc;
+}
+
+input.form-control:focus {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+}
+
+/* Cards */
+.card {
+  background-color: rgba(15, 15, 30, 0.85);
+  border: 1px solid #444;
+  box-shadow: 0 0 10px rgba(0, 255, 137, 0.15);
+  margin-bottom: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(0, 255, 137, 0.3);
+}
+
+.card img {
+  object-fit: cover;
+  height: 320px;
+  border-bottom: 1px solid #444;
+}
+
+.card-body {
+  color: #c5c5c5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #6c5ce7;
+  border-color: #6c5ce7;
+}
+
+.btn-primary:hover {
+  background-color: #5a4bcf;
+  border-color: #5a4bcf;
+}
+
+/* Modal */
+.modal-content {
+  background-color: rgba(20, 20, 40, 0.95);
+  color: #f1f1f1;
+}
+
+.modal-title {
+  color: #00ff91;
+}
