@@ -30,19 +30,35 @@ const createCharacterCard = (character) => {
   col.className = "col-md-4 col-lg-3";
 
   col.innerHTML = `
-  <div class="card h-100">
-  <img src="${character.image}" class="card-img-top" alt="...">
-  <div class="card-body d-flex flex-column">
-    <h5 class="card-title">${character.name}</h5>
-    <p class="card-text">${character.status}</p>
-    <p class="card-text">${character.location.name}</p>
-    <p class="card-text">${character.species}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-  </div>
+    <div class="card h-100">
+      <img src="${character.image}" class="card-img-top" alt="${character.name}">
+      <div class="card-body d-flex flex-column">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#characterModal">
+          Show Details
+        </button>
+      </div>
+    </div>
   `;
 
-  container.appendChild(col);
+  const detailsButton = col.querySelector("button"); 
+
+  detailsButton.addEventListener("click", () => {
+    const modalBody = document.querySelector(".modal-body");
+    const modalTitle = document.querySelector(".modal-title");
+
+    modalTitle.textContent = character.name;
+
+    modalBody.innerHTML = `
+      <img src="${character.image}" class="img-fluid mb-3" />
+      <p><strong>Status:</strong> ${character.status}</p>
+      <p><strong>Species:</strong> ${character.species}</p>
+      <p><strong>Gender:</strong> ${character.gender}</p>
+      <p><strong>Location:</strong> ${character.location.name}</p>
+      <p><strong>Episode Count:</strong> ${character.episode.length}</p>
+    `;
+  });
+
+  container.appendChild(col); 
 };
 
 searchInput.addEventListener("input", () => {
@@ -63,3 +79,16 @@ window.addEventListener("scroll", () => {
 });
 
 fetchCharacters();
+
+let debounceTimer;
+
+searchInput.addEventListener("input", () => {
+  clearTimeout(debounceTimer);
+
+  debounceTimer = setTimeout(() => {
+    container.innerHTML = "";
+    searchQuery = searchInput.value;
+    currentPage = 1;
+    fetchCharacters(currentPage, searchQuery);
+  }, 500);
+});
