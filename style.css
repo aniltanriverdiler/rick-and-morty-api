@@ -34,11 +34,30 @@ h1 {
   text-shadow: 1px 1px 2px #000;
 }
 
+.fav-text {
+  color: #00ff91;
+  text-shadow: 1px 1px 2px #000;
+  font-size: 24px;
+}
+
 /* Input */
+.form-control {
+  width: 82.5%;
+  height: 42px;
+}
+
 input.form-control {
   background-color: rgba(0, 0, 0, 0.6);
   border: 1px solid #00ff91;
   color: #fff;
+  transition: all 0.3s ease;
+}
+
+input.form-control:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 10px rgba(0, 255, 145, 0.3);
+  animation: pulse 1s infinite;
+  -webkit-animation: pulse 1s infinite;
 }
 
 input.form-control::placeholder {
@@ -48,6 +67,9 @@ input.form-control::placeholder {
 input.form-control:focus {
   background-color: rgba(0, 0, 0, 0.6);
   color: #fff;
+  transform: scale(1.03);
+  box-shadow: 0 0 15px rgba(0, 255, 145, 0.6);
+  border-color: #00ff91;
 }
 
 /* Cards */
@@ -88,12 +110,70 @@ input.form-control:focus {
   border-color: #5a4bcf;
 }
 
+.btn-outline-warning {
+  margin: 0 140px;
+}
+
 /* Modal */
 .modal-content {
   background-color: rgba(20, 20, 40, 0.95);
   color: #f1f1f1;
+  border-radius: 15px;
+  animation: fadeInModal 0.5s ease forwards;
 }
 
 .modal-title {
   color: #00ff91;
+  font-size: 1.8rem;
+  text-shadow: 1px 1px 2px #000;
+  font-weight: bold;
+}
+
+/* Modal Body */
+.modal-body {
+  color: #c5c5c5;
+}
+
+.modal-body img {
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 255, 145, 0.5);
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Close Button */
+.modal-footer .btn-primary {
+  background-color: #6c5ce7;
+  border-color: #6c5ce7;
+  font-weight: bold;
+}
+
+.modal-footer .btn-primary:hover {
+  background-color: #5a4bcf;
+  border-color: #5a4bcf;
+}
+
+/* Search Bar Pulse Effect */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 145, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 255, 145, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 145, 0);
+  }
+}
+
+/* Modal Fade-In Animation */
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
